@@ -318,7 +318,7 @@ function obtenerDimensionesImagen(rutaImagen) {
  * const brillante = ajustarBrillo(matriz, 1.5); // 50% más claro
  * const oscuro = ajustarBrillo(matriz, 0.5);    // 50% más oscuro
  */
-function ajustarBrillo(matriz, factor) {
+
   // TODO: Implementar ajuste de brillo
   
   // 1. Crear matriz resultado
@@ -333,8 +333,17 @@ function ajustarBrillo(matriz, factor) {
   //     // El canal alpha NO se modifica
   //   }
   // }
-  
-  return []; // REEMPLAZAR
+function ajustarBrillo(matriz, factor) {
+  const resultado = copiarMatriz(matriz);
+
+  for(let i = 0; i < resultado.length; i++) {
+    for (let j = 0; j < resultado[i].length; j++) {
+      resultado[i][j].r = limitarValorColor(matriz[i][j].r * factor);
+      resultado[i][j].g = limitarValorColor(matriz[i][j].g * factor);
+      resultado[i][j].b = limitarValorColor(matriz[i][j].b * factor);
+    }
+  }
+  return resultado; // REEMPLAZAR
 }
 
 /**
