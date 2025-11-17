@@ -542,7 +542,29 @@ function rotar90Grados(matriz) {
   // r = r1 * (1 - factor) + r2 * factor
   // g = g1 * (1 - factor) + g2 * factor
   // b = b1 * (1 - factor) + b2 * factor
+function mezclarImagenes(matriz1, matriz2, factor) {  
+  const filas = matriz1.length;
+  const columnas = matriz1[0].length;
 
+  if(
+    filas !== matriz2.length ||
+    columnas !== matriz2[0].length
+  ) {
+    throw new Error("Las imágenes deben tener el mismo tamaño.");
+  }
+  return matriz1.map((fila, i) =>
+    fila.map((pixel1, j) => {
+      const pixel2 = matriz2[i][j];
+
+      return {
+        r: pixel1.r * (1 - factor) + pixel2.r * factor,
+        g: pixel1.g * (1 - factor) + pixel2.g * factor,
+        b: pixel1.b * (1 - factor) + pixel2.b * factor,
+        a: pixel1.a * (1 - factor) + pixel2.a * factor
+      };
+    })
+  ); // REEMPLAZAR
+}
 
 /**
  * Ejercicio 4.2: Filtro Sepia (9 puntos)
