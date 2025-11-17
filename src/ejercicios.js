@@ -459,10 +459,10 @@ function voltearHorizontal(matriz) {
  * @example
  * const invertido = voltearVertical(matriz);
  */
-function voltearVertical(matriz) {
+
   // TODO: Implementar volteo vertical
-  
-  return []; // REEMPLAZAR
+function voltearVertical(matriz) {  
+  return [...matriz].reverse(); // REEMPLAZAR
 }
 
 /**
