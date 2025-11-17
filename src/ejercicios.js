@@ -1,9 +1,9 @@
 // ============================================
 // EDITOR DE IMÁGENES CON ÁLGEBRA MATRICIAL
 // ============================================
-// Nombre del estudiante: _________________
-// Fecha: _________________
-// Grupo: _________________
+// Nombre del estudiante: Giovana Ruby Díaz Anduze
+// Fecha: Martes 19 de noviembre de 2025
+// Grupo: 1° A
 
 const { PNG } = require('pngjs');
 const fs = require('fs');
