@@ -584,7 +584,26 @@ function mezclarImagenes(matriz1, matriz2, factor) {
  */
 
   // TODO: Implementar filtro sepia
+function aplicarSepia(matriz) {
+  return matriz.map(fila =>
+    fila.map(pixel => {
+      const r = pixel.r;
+      const g = pixel.g;
+      const b = pixel.b;
 
+      const R_nuevo = 0.393 * r + 0.769 * g + 0.189 * b;
+      const G_nuevo = 0.349 * r + 0.686 * g + 0.168 * b;
+      const B_nuevo = 0.272 * r + 0.534 * g + 0.131 * b;
+
+      return {
+        r: R_nuevo,
+        g: G_nuevo,
+        b: B_nuevo,
+        a: pixel.a
+      };
+    })
+  ); // REEMPLAZAR
+}
 
 /**
  * Ejercicio 4.3: Detectar bordes (simplificado) (8 puntos)
