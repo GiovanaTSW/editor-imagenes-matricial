@@ -176,7 +176,34 @@ const {
   // fs.writeFileSync(rutaSalida, buffer);
 
   // ESCRIBE TU CÓDIGO AQUÍ
+function matrizAImagen(matriz, rutaSalida) {
+  validarMatriz(matriz);
 
+  const dims = obtenerDimensiones(matriz);
+
+  const png = new PNG( {
+    width: dims.columnas,
+    height: dims.filas
+  });
+
+  for (let y = 0; y < dims.filas; y++) {
+    for (let x = 0; x < dims.columnas; x++) {
+      const idx = (dims.columnas * y + x) << 2;
+
+      const pixel = matriz[y][x];
+
+      png.data[idx] = limitarValorColor(pixel.r);
+      png.data[idx + 1] = limitarValorColor(pixel.g);
+      png.data[idx + 2] = limitarValorColor(pixel.b);
+      png.data[idx + 3] = limitarValorColor(pixel.a);
+    }
+  }
+
+  asegurarDirectorio(path.dirname(rutaSalida));
+
+  const buffer = PNG.sync.write(png);
+  fs.writeFileSync(rutaSalida, buffer);
+}
 
 /**
  * Ejercicio 1.3: Obtener un canal específico de color (5 puntos)
@@ -194,7 +221,7 @@ const {
  * // Si un pixel era {r:200, g:100, b:50, a:255}
  * // Ahora será {r:200, g:200, b:200, a:255} (gris)
  */
-function obtenerCanal(matriz, canal) {
+ //function obtenerCanal(matriz, canal) {
   // TODO: Implementar extracción de canal
   
   // 1. Validar parámetros
@@ -217,8 +244,26 @@ function obtenerCanal(matriz, canal) {
   //     };
   //   }
   // }
-  
-  return []; // REEMPLAZAR CON TU CÓDIGO
+
+function obtenerCanal(matriz, canal) {
+  if (!['r', 'g', 'b'].includes(canal)) {
+    throw new Error("El canal debe ser 'r', 'g', o 'b'");
+  }
+
+  const resultado = copiarMatriz(matriz);
+
+  for (let i = 0; i < resultado.length; i++) {
+    for (let j = 0; j < resultado[i].length; j++) {
+      const valor = matriz[i][j][canal];
+      resultado[i][j] = {
+        r: valor,
+        g: valor,
+        b: valor,
+        a: matriz[i][j].a
+      };
+    }
+  }
+  return resultado; // REEMPLAZAR CON TU CÓDIGO
 }
 
 /**
