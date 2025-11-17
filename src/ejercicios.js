@@ -364,10 +364,17 @@ function ajustarBrillo(matriz, factor) {
  * // Blanco (255,255,255) → Negro (0,0,0)
  * // Rojo (255,0,0) → Cian (0,255,255)
  */
-function invertirColores(matriz) {
+
   // TODO: Implementar inversión de colores
-  
-  return []; // REEMPLAZAR
+function invertirColores(matriz) {
+  return matriz.map(fila =>
+    fila.map(pixel => ({
+      r: 255 - pixel.r,
+      g: 255 - pixel.g,
+      b: 255 - pixel.b,
+      a: pixel.a
+    }))
+  )
 }
 
 /**
