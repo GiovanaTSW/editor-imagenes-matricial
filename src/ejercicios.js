@@ -542,29 +542,7 @@ function rotar90Grados(matriz) {
   // r = r1 * (1 - factor) + r2 * factor
   // g = g1 * (1 - factor) + g2 * factor
   // b = b1 * (1 - factor) + b2 * factor
-function mezclarImagenes(matriz1, matriz2, factor) {  
-  const filas = matriz1.length;
-  const columnas = matriz1[0].length;
 
-  if(
-    filas !== matriz2.length ||
-    columnas !== matriz2[0].length
-  ) {
-    throw new Error("Las imágenes deben tener el mismo tamaño.");
-  }
-  return matriz1.map((fila, i) =>
-    fila.map((pixel1, j) => {
-      const pixel2 = matriz2[i][j];
-
-      return {
-        r: pixel1.r * (1 - factor) + pixel2.r * factor,
-        g: pixel1.g * (1 - factor) + pixel2.g * factor,
-        b: pixel1.b * (1 - factor) + pixel2.b * factor,
-        a: pixel1.a * (1 - factor) + pixel2.a * factor
-      };
-    })
-  ); // REEMPLAZAR
-}
 
 /**
  * Ejercicio 4.2: Filtro Sepia (9 puntos)
@@ -584,26 +562,7 @@ function mezclarImagenes(matriz1, matriz2, factor) {
  */
 
   // TODO: Implementar filtro sepia
-function aplicarSepia(matriz) {
-  return matriz.map(fila =>
-    fila.map(pixel => {
-      const r = pixel.r;
-      const g = pixel.g;
-      const b = pixel.b;
 
-      const R_nuevo = 0.393 * r + 0.769 * g + 0.189 * b;
-      const G_nuevo = 0.349 * r + 0.686 * g + 0.168 * b;
-      const B_nuevo = 0.272 * r + 0.534 * g + 0.131 * b;
-
-      return {
-        r: R_nuevo,
-        g: G_nuevo,
-        b: B_nuevo,
-        a: pixel.a
-      };
-    })
-  ); // REEMPLAZAR
-}
 
 /**
  * Ejercicio 4.3: Detectar bordes (simplificado) (8 puntos)
