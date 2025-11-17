@@ -274,13 +274,23 @@ function obtenerCanal(matriz, canal) {
  * const dims = obtenerDimensionesImagen('test.png');
  * // {ancho: 100, alto: 100, totalPixeles: 10000}
  */
-function obtenerDimensionesImagen(rutaImagen) {
+
   // TODO: Obtener dimensiones sin cargar toda la imagen en memoria
   
   // Pista: Puedes cargar la imagen y usar obtenerDimensiones()
   // o leer solo el header del PNG
-  
-  return { ancho: 0, alto: 0, totalPixeles: 0 }; // REEMPLAZAR
+function obtenerDimensionesImagen(rutaImagen) {
+  const buffer = fs.readFileSync(rutaImagen);
+  const png = PNG.sync.read(buffer);
+
+    const ancho =  png.width;
+    const alto = png.height;
+
+  return { 
+    ancho,
+    alto,
+    totalPixeles: ancho * alto
+  }; // REEMPLAZAR
 }
 
 // ============================================
