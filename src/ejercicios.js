@@ -55,30 +55,27 @@ const {
  * const matriz = imagenAMatriz('imagenes/entrada/test_pequeña.png');
  * // matriz[0][0] = {r: 0, g: 0, b: 128, a: 255}
  */
-function imagenAMatriz(rutaImagen) {
+//function imagenAMatriz(rutaImagen) {
   // TODO: Implementar la conversión de PNG a matriz
   
   // 1. Leer el archivo PNG
   // const buffer = fs.readFileSync(rutaImagen);
   // const png = PNG.sync.read(buffer);
-  const buffer = fs.readFileSync(rutaImagen);
-  const png = PNG.sync.read(buffer);
+
 
   // 2. Crear la matriz vacía
   // const matriz = [];
-  const matriz = [];
+
   
   // 3. Recorrer cada fila (y) y cada columna (x)
   // for (let y = 0; y < png.height; y++) {
   //   const fila = [];
   //   for (let x = 0; x < png.width; x++) {
-  for (let y = 0; y < png.height; y++) {
-    const fila = [];
 
-      for (let x = 0; x < png.width; x++){
+
         // 4. Calcular el índice en el buffer
         //    const idx = (png.width * y + x) << 2; // equivalente a * 4
-        const idx = (png.width * y + x) << 2;
+
 
             
         // 5. Extraer los valores RGBA
@@ -94,24 +91,11 @@ function imagenAMatriz(rutaImagen) {
         //   matriz.push(fila);
         // }
 
-        const pixel = {
-          r: png.data[idx],
-          g: png.data[idx + 1],
-          b: png.data[idx + 2],
-          a: png.data[idx + 3]
-        };
-
-        fila.push(pixel);
-      }
-      matriz.push(fila);
-    }  
  
   
   // 6. Retornar la matriz
   // return matriz;
-  
-  return matriz; // REEMPLAZAR CON TU CÓDIGO
-}
+
 
 /**
  * Ejercicio 1.2: Convertir matriz de píxeles a imagen PNG (5 puntos)
@@ -131,21 +115,21 @@ function imagenAMatriz(rutaImagen) {
  * const matriz = imagenAMatriz('entrada.png');
  * matrizAImagen(matriz, 'imagenes/salida/copia.png');
  */
-function matrizAImagen(matriz, rutaSalida) {
+  //function matrizAImagen(matriz, rutaSalida) {
   // TODO: Implementar la conversión de matriz a PNG
   
   // 1. Validar la matriz
   // validarMatriz(matriz);
-  
+
   // 2. Obtener dimensiones
   // const dims = obtenerDimensiones(matriz);
-  
+
   // 3. Crear el PNG
   // const png = new PNG({
   //   width: dims.columnas,
   //   height: dims.filas
   // });
-  
+
   // 4. Llenar png.data
   // for (let y = 0; y < dims.filas; y++) {
   //   for (let x = 0; x < dims.columnas; x++) {
@@ -158,16 +142,16 @@ function matrizAImagen(matriz, rutaSalida) {
   //     png.data[idx + 3] = limitarValorColor(pixel.a);
   //   }
   // }
-  
+
   // 5. Asegurar que existe el directorio de salida
   // asegurarDirectorio(path.dirname(rutaSalida));
   
   // 6. Guardar el archivo
   // const buffer = PNG.sync.write(png);
   // fs.writeFileSync(rutaSalida, buffer);
-  
+
   // ESCRIBE TU CÓDIGO AQUÍ
-}
+
 
 /**
  * Ejercicio 1.3: Obtener un canal específico de color (5 puntos)
